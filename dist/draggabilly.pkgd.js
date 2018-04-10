@@ -1151,8 +1151,19 @@ var positionValues = {
 proto._create = function() {
   // properties
   this.position = {};
-  this._getPosition();
 
+  var $e = $(this.element);
+  var init_posx = ($e.data('init-posx') != 'undefined') ? $e.data('init-posx') : null;
+  var init_posy = ($e.data('init-posy') != 'undefined') ? $e.data('init-posy') : null;
+
+  if(init_posx || init_posy){
+      this.position = {x:init_posx, y:init_posy};
+      this.setPosition(init_posx,init_posy)
+  }else{
+      this._getPosition();
+  }
+
+    //console.log(this.position);
   this.startPoint = { x: 0, y: 0 };
   this.dragPoint = { x: 0, y: 0 };
 
