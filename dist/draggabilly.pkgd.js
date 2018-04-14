@@ -1212,6 +1212,10 @@ proto.dispatchJQueryEvent = function( type, event, args ) {
   if ( !jQuery || !this.$element ) {
     return;
   }
+  // if disabled ignore clickEvent
+  if ( !this.isEnabled ) {
+    return;
+  }
   // create jQuery event
   var $event = jQuery.Event( event );
   $event.type = type;
