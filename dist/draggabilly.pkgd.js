@@ -1213,7 +1213,7 @@ proto.dispatchJQueryEvent = function( type, event, args ) {
     return;
   }
   // if disabled ignore clickEvent
-  if ( !this.isEnabled ) {
+  if ( !this.isEnabled && this.options.disableClicks  ) {
     return;
   }
   // create jQuery event
